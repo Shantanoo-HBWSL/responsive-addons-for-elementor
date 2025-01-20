@@ -1071,8 +1071,15 @@ class Responsive_Addons_For_Elementor {
 					case 'slider':
 					case 'testimonial-slider':
 						if ( ! isset( $included_libs['rael-swiper'] ) ) {
+							// $included_libs['rael-swiper'] = true;
+							// wp_enqueue_script( 'rael-swiper', RAEL_ASSETS_URL . 'lib/swiper/swiper.js', array(), RAEL_VER, true );
+							// wp_localize_script( 'rael-swiper', 'rael_elementor_swiper', $swiper_class );
 							$included_libs['rael-swiper'] = true;
-							wp_enqueue_script( 'rael-swiper', RAEL_ASSETS_URL . 'lib/swiper/swiper.js', array(), RAEL_VER, true );
+							if(defined( 'ELEMENTOR_VERSION' ) && version_compare( ELEMENTOR_VERSION, '3.25.0', '>' )) {
+								wp_enqueue_script( 'rael-swiper', RAEL_ASSETS_URL . 'lib/swiper/swiper.js', array(), RAEL_VER, true );
+							} else {
+								wp_enqueue_script( 'rael-swiper', RAEL_ASSETS_URL . 'lib/swiper/swiper.js', array(), RAEL_VER, true );
+							}
 							wp_localize_script( 'rael-swiper', 'rael_elementor_swiper', $swiper_class );
 						}
 						break;
