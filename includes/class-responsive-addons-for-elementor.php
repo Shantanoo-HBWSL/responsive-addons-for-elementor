@@ -711,7 +711,7 @@ class Responsive_Addons_For_Elementor {
 
 			if ( ! $widgets ) {
 				$rael_widgets_data->insert_widgets_data();
-			} elseif ( version_compare( RAEL_VER, $installed_rael_version, '>' ) ) {
+			} else if ( version_compare( RAEL_VER, $installed_rael_version, '>' ) ) {
 				$this->update_frontend_assets( $widgets, true );
 			}
 		}
@@ -996,7 +996,7 @@ class Responsive_Addons_For_Elementor {
 		$included_libs = array();
 
 		// Localize the Swiper Library on the basis of version.
-		$swiper_class = array( 'swiper' => 'swiper-container-' );
+		$swiper_class = array( 'swiper' => 'swiper-' );
 		if ( defined( 'RAEL_ELEMENTOR_SWIPER' ) && true === RAEL_ELEMENTOR_SWIPER ) {
 			$swiper_class = array( 'swiper' => 'swiper-' );
 		}
@@ -1071,9 +1071,6 @@ class Responsive_Addons_For_Elementor {
 					case 'slider':
 					case 'testimonial-slider':
 						if ( ! isset( $included_libs['rael-swiper'] ) ) {
-							// $included_libs['rael-swiper'] = true;
-							// wp_enqueue_script( 'rael-swiper', RAEL_ASSETS_URL . 'lib/swiper/swiper.js', array(), RAEL_VER, true );
-							// wp_localize_script( 'rael-swiper', 'rael_elementor_swiper', $swiper_class );
 							$included_libs['rael-swiper'] = true;
 							if(defined( 'ELEMENTOR_VERSION' ) && version_compare( ELEMENTOR_VERSION, '3.25.0', '>' )) {
 								wp_enqueue_script( 'rael-swiper', RAEL_ASSETS_URL . 'lib/swiper/swiper.js', array(), RAEL_VER, true );
